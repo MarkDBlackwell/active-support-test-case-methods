@@ -6,6 +6,9 @@ See test/test_helper.rb.
 
 Automatically require all files with shared test classes
 
+From the line containing the definition of REQUIRE_TEST_BASENAME, down through:
+  paths.sort.each{|e| require e}
+
 In order that
 
 there's not
@@ -19,24 +22,25 @@ in test/test_helper.rb
 
 See test/test_helper.rb.
 
+classes ShouldIncludeThisFileLog and Object - good, as is
+TODO: perhaps, rename to, 'LogTestFiles'.
 
+Have you ever wondered whether new tests, which you *thought* you just created and saved, perhaps in a deep subdirectory of 'test/functional' or 'test/unit', actually got run in a full test suite?
 
-Have you ever wondered whether some test files you just made
+This code is a way to verify that. It automatically logs all test files run, in 'out/test-should-include-this-file.log'.
 
-actually 'happened' in your run of the full test suite?
+You don't have to do anything (in your test files) beyond the usual:
+  require 'test_helper'
 
-Log tests which were run to _.
+##ActiveSupport::TestCase private methods
 
-## Miscellaneous
+###From test/test_helper.rb
 
-See test/test_helper.rb.
+Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag.
 
-ActiveSupport::TestCase private methods:
-See: test/test_helper.rb.
+TODO: Perhaps, to generalize these methods, change to define the pairs somewhere. So, it could be called, 'model_pairs'.
 
 TODO: write, 'so you can do: myModel ...'
-
-Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag. Perhaps, to generalize these methods, change to defining the pairs somewhere. This could be called, 'model_pairs'.
 
 construct_changes_strings
 sub:
@@ -105,16 +109,35 @@ see_output - good, as is
 Note: required is, 'App.root'. Is this automatic, in Rails?
 sub:
   (none)
+So, in a test, whether controller or view, you can say:
+  see_output
+or
+  see_output some_string
+and the generated web page will be copied, complete, into the file, 'out/see-output'.
 
 series - good, as is
 sub:
   (none)
+So you can say:
+  series 'aaa', 3
+and it will return
+  %w[aaa aab aac]
 
-try_code - grep says not used anywhere.
+try_code - good, as is
 Note: change 'to_s' to 'join', for Ruby 1.9, since on Array.
 sub:
-
-So you can say:
-  print try_code 'a'
-and it will do:
-  print 'a.inspect:
+  (none)
+Possibly useful while experimenting at the Rails console, when unsure how something gets passed, whether as a local variable, or an instance variable.
+TODO: Find out how really to do this.
+So, if you say:
+  class A < SomeTestClass
+  a=1; @a=2; try_code 'a'; end; A.new
+the console will print:
+   a.inspect:1
+  @a.inspect:2
+or if you say:
+  try_code 'bad_stuff'
+it will print:
+   bad_stuff.inspect:NameError: undefined local variable or method `a' for main:Object
+        from...
+  @bad_stuff.inspect:"nil"
