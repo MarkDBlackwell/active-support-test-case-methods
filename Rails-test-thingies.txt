@@ -1,0 +1,120 @@
+# Some helpful Rails unit test thingies:
+
+## Organize shared test methods
+
+See test/test_helper.rb.
+
+Automatically require all files with shared test classes
+
+In order that
+
+there's not
+
+a big collection of all shared test methods
+
+in test/test_helper.rb
+
+
+## Test logging
+
+See test/test_helper.rb.
+
+
+
+Have you ever wondered whether some test files you just made
+
+actually 'happened' in your run of the full test suite?
+
+Log tests which were run to _.
+
+## Miscellaneous
+
+See test/test_helper.rb.
+
+ActiveSupport::TestCase private methods:
+See: test/test_helper.rb.
+
+TODO: write, 'so you can do: myModel ...'
+
+Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag. Perhaps, to generalize these methods, change to defining the pairs somewhere. This could be called, 'model_pairs'.
+
+construct_changes_strings
+sub:
+  model_names
+  series
+
+mock_directory_picture_bad_names - itself application-dependent
+Perhaps, change: instead, parameterize the model, making it:
+  def mock_model_bad_names(model,expected)
+    model.expects(:find_bad_names).returns expected.sort.reverse
+  end
+Instead, invoke 'mock_model_bad_names(DirectoryPicture,expected)'.
+sub:
+  (none)
+
+mock_directory_pictures - itself application-dependent
+Perhaps, change: instead, parameterize the model, making it:
+  def mock_model_simple(model,expected=:all)
+    mock_model model, :name, expected
+  end
+Instead, invoke 'mock_model_simple(DirectoryPicture,expected)'.
+sub:
+  mock_model
+
+mock_expected - itself application-dependent
+Perhaps, change: rename to, 'mock_all_my_models_expected'.
+Not show.
+sub:
+  application-dependent:
+    mock_file_tags
+    mock_directory_pictures
+    mock_unpaired_names
+
+mock_file_tag_bad_names - itself application-dependent
+Instead, invoke 'mock_model_bad_names(FileTag,expected)'.
+sub:
+  (none)
+
+mock_file_tags
+Instead, invoke 'mock_model_simple(FileTag,expected)'.
+sub:
+  application-dependent:
+    mock_model
+
+mock_model - itself application-dependent (pairs only)
+Perhaps, change, to use: 'model_pairs' (defined above).
+Or, pass two models.
+sub:
+  (none)
+
+mock_unpaired_names - itself application-dependent
+Perhaps, change: instead, parameterize the model, making it:
+  def mock_model_unpaired_names(model,expected)
+    model.expects(:find_unpaired_names).at_least_once.returns(
+        expected.sort.reverse)
+  end
+Instead, invoke 'mock_model_bad_names(DirectoryPicture,expected)'.
+sub:
+  (none)
+
+model_names - good, as is
+sub:
+  (none)
+
+see_output - good, as is
+Note: required is, 'App.root'. Is this automatic, in Rails?
+sub:
+  (none)
+
+series - good, as is
+sub:
+  (none)
+
+try_code - grep says not used anywhere.
+Note: change 'to_s' to 'join', for Ruby 1.9, since on Array.
+sub:
+
+So you can say:
+  print try_code 'a'
+and it will do:
+  print 'a.inspect:
