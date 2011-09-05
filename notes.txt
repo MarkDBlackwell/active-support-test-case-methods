@@ -1,36 +1,6 @@
-# Some helpful Rails unit test thingies:
+# Some helpful Rails unit testing things:
 
-## Organize shared test methods
-
-See test/test_helper.rb.
-
-Automatically require all files with shared test classes
-
-From the line containing the definition of REQUIRE_TEST_BASENAME, down through:
-  paths.sort.each{|e| require e}
-
-In order that
-
-there's not
-
-a big collection of all shared test methods
-
-in test/test_helper.rb
-
-
-## Test logging
-
-See test/test_helper.rb.
-
-classes ShouldIncludeThisFileLog and Object - good, as is
-TODO: perhaps, rename to, 'LogTestFiles'.
-
-Have you ever wondered whether new tests, which you *thought* you just created and saved, perhaps in a deep subdirectory of 'test/functional' or 'test/unit', actually got run in a full test suite?
-
-This code is a way to verify that. It automatically logs all test files run, in 'out/test-should-include-this-file.log'.
-
-You don't have to do anything (in your test files) beyond the usual:
-  require 'test_helper'
+For users of the Test/Unit system.
 
 ##ActiveSupport::TestCase private methods
 
