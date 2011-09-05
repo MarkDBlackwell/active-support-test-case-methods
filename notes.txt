@@ -1,10 +1,6 @@
-# Some helpful Rails unit testing things:
+#ActiveSupport::TestCase private methods
 
-For users of the Test/Unit system.
-
-##ActiveSupport::TestCase private methods
-
-###From test/test_helper.rb
+(from test/test_helper.rb)
 
 Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag.
 
