@@ -1,0 +1,3 @@
+controller_yield - good, as is
+gallery_uri - special
+render_partial - good, as is

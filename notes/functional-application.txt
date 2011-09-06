@@ -1,0 +1,1 @@
+expect_redirect_sessions_new - good, as is

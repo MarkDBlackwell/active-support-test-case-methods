@@ -1,0 +1,10 @@
+../webmaster-gallery/test/functional/admin_pictures/_shared.rb
+../webmaster-gallery/test/functional/application/_shared.rb
+../webmaster-gallery/test/functional/sessions/_shared.rb
+../webmaster-gallery/test/functional/_shared.rb
+../webmaster-gallery/test/unit/models/_shared.rb
+../webmaster-gallery/test/unit/views/helpers/application/_shared.rb
+../webmaster-gallery/test/unit/views/helpers/pictures/_shared.rb
+../webmaster-gallery/test/unit/views/layouts/_shared.rb
+../webmaster-gallery/test/unit/views/partials/_shared.rb
+../webmaster-gallery/test/unit/views/_shared.rb
