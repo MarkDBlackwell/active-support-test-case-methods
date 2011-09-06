@@ -1,1 +1,3 @@
+From webmaster-gallery/test/unit/views/layouts/_shared.rb
+
 render_layout - good, as is

@@ -1,2 +1,4 @@
+From webmaster-gallery/test/functional/admin_pictures/_shared.rb
+
 assert_flag - good, as is
 assert_flash_errors - good, as is

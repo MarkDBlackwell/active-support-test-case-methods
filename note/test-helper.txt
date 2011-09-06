@@ -1,6 +1,6 @@
-#ActiveSupport::TestCase private methods
+From webmaster-gallery/test/test_helper.rb
 
-(from test/test_helper.rb)
+#ActiveSupport::TestCase private methods
 
 Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag.
 
