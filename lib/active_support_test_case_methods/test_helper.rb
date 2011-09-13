@@ -1,26 +1,28 @@
+module ActiveSupportTestCaseMethods
+  
 # Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag.
 
 # TODO: Perhaps, to generalize these methods, change to define the pairs somewhere. So, it could be called, 'model_pairs'.
 # TODO: write, 'so you can do: myModel ...'
 
-class ActiveSupport::TestCase private methods
+  module TestHelper
 
-  private
+    private
 
 # sub:
 #   model_names
 #   series
 
-  def construct_changes_strings(model,operation,count=1)
-    expected=model_names model
-    case operation
-    when 'delet' then changed=expected.pop count
-    when 'add'
-      changed=series "added#{ 'picture'==model ? '.png' : '-name' }", count
-      expected=expected.take(count).concat changed
+    def construct_changes_strings(model,operation,count=1)
+      expected=model_names model
+      case operation
+      when 'delet' then changed=expected.pop count
+      when 'add'
+        changed=series "added#{ 'picture'==model ? '.png' : '-name' }", count
+        expected=expected.take(count).concat changed
+      end
+      [expected,changed]
     end
-    [expected,changed]
-  end
 
 # Perhaps, change: rename to, 'mock_all_my_models_expected'.
 # Not show.
@@ -30,13 +32,13 @@ class ActiveSupport::TestCase private methods
 #     mock_directory_pictures
 #     mock_unpaired_names
 
-  def mock_expected(model,expected)
-    other='tag'==model ? [] : :all
-    t,p  ='tag'==model ? [expected,other] : [other,expected]
-    mock_file_tags          t
-    mock_directory_pictures p
-    mock_unpaired_names []
-  end
+    def mock_expected(model,expected)
+      other='tag'==model ? [] : :all
+      t,p  ='tag'==model ? [expected,other] : [other,expected]
+      mock_file_tags          t
+      mock_directory_pictures p
+      mock_unpaired_names []
+    end
 
 # mock_model - (pairs only)
 # Perhaps, change, to use: 'model_pairs' (defined above).
@@ -44,15 +46,15 @@ class ActiveSupport::TestCase private methods
 # sub:
 #   (none)
 
-  def mock_model(model,method,expected)
-    expected=case
+    def mock_model(model,method,expected)
+      expected=case
 # See ActiveRecord::Base method, '==='. Another way is to use object_id:
-    when DirectoryPicture==model then Picture
-    when FileTag         ==model then Tag
-    end.all.map &method if :all==expected
-    model.expects(:all).at_least_once.returns(expected.sort.reverse.
-        map{|e| (p=model.new).expects(method).at_least_once.returns e; p} )
-  end
+      when DirectoryPicture==model then Picture
+      when FileTag         ==model then Tag
+      end.all.map &method if :all==expected
+      model.expects(:all).at_least_once.returns(expected.sort.reverse.
+          map{|e| (p=model.new).expects(method).at_least_once.returns e; p} )
+    end
 
 # Was, 'mock_directory_picture_bad_names', etc.
 # Perhaps, change: instead, parameterize the model, making it:
@@ -60,9 +62,9 @@ class ActiveSupport::TestCase private methods
 # sub:
 #   (none)
 
-  def mock_model_bad_names(model,expected)
-    model.expects(:find_bad_names).returns expected.sort.reverse
-  end
+    def mock_model_bad_names(model,expected)
+      model.expects(:find_bad_names).returns expected.sort.reverse
+    end
 
 # Was: mock_directory_pictures - itself application-dependent
 # Perhaps, change: instead, parameterize the model, making it:
@@ -70,9 +72,9 @@ class ActiveSupport::TestCase private methods
 # sub:
 #   mock_model
 
-  def mock_model_simple(model,expected=:all)
-    mock_model model, :name, expected
-  end
+    def mock_model_simple(model,expected=:all)
+      mock_model model, :name, expected
+    end
 
 # Was: mock_unpaired_names
 # Perhaps, change: instead, parameterize the model, making it:
@@ -80,19 +82,19 @@ class ActiveSupport::TestCase private methods
 # sub:
 #   (none)
 
-  def mock_model_unpaired_names(model,expected)
-    model.expects(:find_unpaired_names).at_least_once.returns(
-        expected.sort.reverse)
-  end
+    def mock_model_unpaired_names(model,expected)
+      model.expects(:find_unpaired_names).at_least_once.returns(
+          expected.sort.reverse)
+    end
 
 # model_names - good, as is
 # sub:
 #   (none)
 
-  def model_names(model)
-    model.capitalize.constantize.all.map &"#{'file' if 'picture'==model}name".
-        to_sym
-  end
+    def model_names(model)
+      model.capitalize.constantize.all.map &"#{'file' if 'picture'==model}name".
+          to_sym
+    end
 
 # see_output - good, as is
 # Note: required is, 'App.root'. Is this automatic, in Rails?
@@ -104,15 +106,15 @@ class ActiveSupport::TestCase private methods
 #   see_output some_string
 # and the generated web page will be copied, complete, into the file, 'out/see-output'.
 
-  def see_output(s=nil)
-    a = %w[rendered response].map{|e|(!respond_to? e) ? nil : (send e)}
-    a.push(a.pop.body) if a.last
-    (a.unshift s).compact!
-    assert_present a, 'nothing defined'
-    f=App.root.join('out/see-output').open 'w'
-    f.print a.first
-    f.close
-  end
+    def see_output(s=nil)
+      a = %w[rendered response].map{|e|(!respond_to? e) ? nil : (send e)}
+      a.push(a.pop.body) if a.last
+      (a.unshift s).compact!
+      assert_present a, 'nothing defined'
+      f=App.root.join('out/see-output').open 'w'
+      f.print a.first
+      f.close
+    end
 
 # series - good, as is
 # sub:
@@ -122,10 +124,10 @@ class ActiveSupport::TestCase private methods
 # and it will return
 #   %w[aaa aab aac]
 
-  def series(start,count=1)
-    o=object=nil
-    Array.new(count){o=o.blank? ? start : o.succ}
-  end
+    def series(start,count=1)
+      o=object=nil
+      Array.new(count){o=o.blank? ? start : o.succ}
+    end
 
 # try_code - good, as is
 # Note: change 'to_s' to 'join', for Ruby 1.9, since on Array.
@@ -146,18 +148,19 @@ class ActiveSupport::TestCase private methods
 #         from...
 #   @bad_stuff.inspect:"nil"
 
-  def try_code(a)
-    a=[a] unless a.kind_of? Array
-    code=a.product(['','@']).map(&:reverse).map &:to_s
-    labels= code.map{|e| "#{e}.inspect:"}
-    results=code.map do |e|
-      begin
-        (eval e).inspect
-      rescue => error
-        error
+    def try_code(a)
+      a=[a] unless a.kind_of? Array
+      code=a.product(['','@']).map(&:reverse).map &:to_s
+      labels= code.map{|e| "#{e}.inspect:"}
+      results=code.map do |e|
+        begin
+          (eval e).inspect
+        rescue => error
+          error
+        end
       end
+      labels.zip(results).flatten.map{|e| e.to_s+"\n"}
     end
-    labels.zip(results).flatten.map{|e| e.to_s+"\n"}
-  end
 
+  end
 end
