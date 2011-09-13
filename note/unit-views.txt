@@ -1,10 +1,6 @@
 From webmaster-gallery/test/unit/views/_shared.rb
 
 assert_partial - good, as is
-assert_single - CssString, covered
-base_uri - special
 check_pretty_html_source - good, as is
 delete_picture_files - good, as is
-filename_matcher - special
 static_asset_matcher - good, as is
-touch_picture_files - special

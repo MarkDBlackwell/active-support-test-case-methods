@@ -12,7 +12,6 @@ assert_nothing_rendered - good, as is
 assert_routing - needs tweaking
 filter - good, as is
 filter_chain - good, as is
-get_password - special
 pretend_logged_in - good, as is
 set_cookies - good, as is
 test_happy_path_response - good, as is

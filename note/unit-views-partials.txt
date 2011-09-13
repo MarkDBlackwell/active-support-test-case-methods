@@ -1,5 +1,4 @@
 From webmaster-gallery/test/unit/views/partials/_shared.rb
 
 controller_yield - good, as is
-gallery_uri - special
 render_partial - good, as is
