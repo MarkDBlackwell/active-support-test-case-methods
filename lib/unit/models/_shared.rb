@@ -1,3 +1,5 @@
+# 
+
   def assert_validates(validator,base,methods,options={})
     v=validator
     [methods].flatten.each do |m|
@@ -13,17 +15,25 @@
     end
   end
 
+# 
+
   def assert_validates_length_of(*a)
     assert_validates 'Length', 'ActiveModel', *a
   end
+
+# 
 
   def assert_validates_numericality_of(*a)
     assert_validates 'Numericality', 'ActiveModel', *a
   end
 
+# 
+
   def assert_validates_presence_of(*a)
     assert_validates 'Presence', 'ActiveModel', *a
   end
+
+# 
 
   def assert_validates_uniqueness_of(*a)
     h=2!=a.length ? {} : a.pop

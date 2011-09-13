@@ -1,8 +1,12 @@
+# 
+
   def login(p=nil)
     p=get_password if p.blank?
     set_cookies
     post :create, :password => p
   end
+
+# 
 
   def remove_read_permission(path)
     mode=path.stat.mode

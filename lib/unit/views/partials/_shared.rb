@@ -1,8 +1,12 @@
+# 
+
   def controller_yield
 # Without setup_with_controller, another render appends the response, increasing
 # any assert_select counts.
     (setup_with_controller; yield) if block_given?
   end
+
+# 
 
   def render_partial(p,local_assigns={})
     # ActionView::TestCase::Behavior#, which invokes ActionView::Rendering#:

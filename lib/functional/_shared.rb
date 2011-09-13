@@ -1,6 +1,10 @@
+# 
+
   def assert_filter(filter)
     assert_filter_kind :before, filter, []
   end
+
+# 
 
   def assert_filter_kind(kind,filter,sa=nil)
     if sa.blank? then skip_actions=[]
@@ -21,21 +25,31 @@
         ].join "\n")
   end
 
+# 
+
   def assert_filter_skips(filter, actions)
     assert_filter_kind :before, filter, actions
   end
+
+# 
 
   def assert_flash_blank
     assert_blank [:error,:notice].map{|e| [flash[e],flash.now[e]]}.to_s
   end
 
+# 
+
   def assert_logged_in
     assert_equal true, session[:logged_in]
   end
 
+# 
+
   def assert_no_filter(filter)
     assert_no_filter_kind :before, filter
   end
+
+# 
 
   def assert_no_filter_kind(kind,filter)
     undesired=[filter, filter, kind]
@@ -48,13 +62,19 @@
         ].join "\n")
   end
 
+# 
+
   def assert_not_logged_in
     assert_blank session[:logged_in]
   end
 
+# 
+
   def assert_nothing_rendered
     assert_template # No template.
   end
+
+# Needs tweaking
 
   def assert_routing(*args)
     k=:path
@@ -72,23 +92,33 @@
     super *args 
   end
 
+# 
+
   def filter
     @controller.send @filter
   end
+
+# 
 
   def filter_chain
 # TODO: Maybe use api.rubyonrails.org/classes/ActionController/Testing/ClassMethods.html method, 'before_filters'.
     @controller._process_action_callbacks
   end
 
+# 
+
   def pretend_logged_in
     session[:logged_in]=true
     set_cookies
   end
 
+# 
+
   def set_cookies
     request.cookies[:not_empty]='not_empty'
   end
+
+# 
 
   def self.test_happy_path_response(action=nil)
     test "happy path" do
@@ -100,6 +130,8 @@
       end
     end
   end
+
+# 
 
   def self.test_routing_tag(directory_root=false)
     test "routing with and without tag should..." do

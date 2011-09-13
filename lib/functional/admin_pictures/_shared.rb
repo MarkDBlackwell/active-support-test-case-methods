@@ -1,6 +1,10 @@
+# 
+
   def assert_flag(*a)
     a.each{|e| assert_present assigns(e), "@#{e} not set."}
   end
+
+# 
 
   def assert_flash_errors(e=nil)
     if e.blank?

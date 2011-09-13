@@ -1,3 +1,5 @@
+# 
+
   def assert_partial(*args)
     p=c=nil
     [args].flatten.each do |e|
@@ -9,6 +11,8 @@
     # ActionController::TemplateAssertions:
     assert_template :partial => p, :count => c
   end
+
+# 
 
   def check_pretty_html_source(*args)
 # TODO: remove array, 'type' (just show types in a comment, above). Use undef?
@@ -33,9 +37,7 @@
         [(a.at i), (anywhere_in_line.at i), '']}.flatten.join nl
   end
 
-  def delete_picture_files
-    @picture_files.each{|e| e.delete}
-  end
+# 
 
   def static_asset_matcher(s)
 # TODO def static_asset_matcher(s) # Lost the digits; don't know why.
