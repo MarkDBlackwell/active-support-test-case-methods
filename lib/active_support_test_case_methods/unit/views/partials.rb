@@ -1,3 +1,5 @@
+# From webmaster-gallery/test/unit/views/partials/_shared.rb
+
 module ActiveSupportTestCaseMethods
   module Unit
     module Views

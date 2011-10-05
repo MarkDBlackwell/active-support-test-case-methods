@@ -1,3 +1,5 @@
+# From webmaster-gallery/test/test_helper.rb
+
 module ActiveSupportTestCaseMethods
   
 # Note: some of these methods use *pairs* of models: e.g., Picture and DirectoryPicture, Tag and FileTag.

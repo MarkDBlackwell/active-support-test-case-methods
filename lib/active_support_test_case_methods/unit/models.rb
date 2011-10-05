@@ -1,3 +1,5 @@
+# From webmaster-gallery/test/unit/models/_shared.rb
+
 module ActiveSupportTestCaseMethods
   module Unit
     module Models

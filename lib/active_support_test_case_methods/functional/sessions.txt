@@ -1,2 +1,1 @@
-From webmaster-gallery/test/functional/sessions/_shared.rb
 

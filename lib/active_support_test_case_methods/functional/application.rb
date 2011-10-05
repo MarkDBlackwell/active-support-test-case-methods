@@ -1,3 +1,5 @@
+# From webmaster-gallery/test/functional/application/_shared.rb
+
 module ActiveSupportTestCaseMethods
   module Functional
     module Application

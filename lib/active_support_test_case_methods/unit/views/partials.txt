@@ -1,2 +1,1 @@
-From webmaster-gallery/test/unit/views/partials/_shared.rb
 

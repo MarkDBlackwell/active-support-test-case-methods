@@ -1,3 +1,5 @@
+# From webmaster-gallery/test/functional/admin_pictures/_shared.rb
+
 module ActiveSupportTestCaseMethods
   module Functional
     module AdminPictures
