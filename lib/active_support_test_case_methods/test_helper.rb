@@ -11,6 +11,7 @@ module ActiveSupportTestCaseMethods
 
     private
 
+# construct_changes_strings
 # sub:
 #   model_names
 #   series
@@ -26,6 +27,7 @@ module ActiveSupportTestCaseMethods
       [expected,changed]
     end
 
+# mock_expected
 # Perhaps, change: rename to, 'mock_all_my_models_expected'.
 # Not show.
 # sub:
@@ -58,6 +60,7 @@ module ActiveSupportTestCaseMethods
           map{|e| (p=model.new).expects(method).at_least_once.returns e; p} )
     end
 
+# mock_model_bad_names
 # Was, 'mock_directory_picture_bad_names', etc.
 # Perhaps, change: instead, parameterize the model, making it:
 # Invoke 'mock_model_bad_names(DirectoryPicture,expected)'.
@@ -68,6 +71,7 @@ module ActiveSupportTestCaseMethods
       model.expects(:find_bad_names).returns expected.sort.reverse
     end
 
+# mock_model_simple
 # Was: mock_directory_pictures - itself application-dependent
 # Perhaps, change: instead, parameterize the model, making it:
 # Instead, invoke 'mock_model_simple(DirectoryPicture,expected)'.
@@ -78,6 +82,7 @@ module ActiveSupportTestCaseMethods
       mock_model model, :name, expected
     end
 
+# mock_model_unpaired_names
 # Was: mock_unpaired_names
 # Perhaps, change: instead, parameterize the model, making it:
 # Instead, invoke 'mock_model_bad_names(DirectoryPicture,expected)'.

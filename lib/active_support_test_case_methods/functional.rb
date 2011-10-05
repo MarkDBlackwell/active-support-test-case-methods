@@ -81,7 +81,6 @@ module ActiveSupportTestCaseMethods
       assert_template # No template.
     end
 
-# Needs tweaking
 # assert_routing - needs tweaking
 
     def assert_routing(*args)
