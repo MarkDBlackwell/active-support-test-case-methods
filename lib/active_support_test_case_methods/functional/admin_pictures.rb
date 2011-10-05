@@ -4,13 +4,13 @@ module ActiveSupportTestCaseMethods
 
       private
 
-# 
+# assert_flag - good, as is
 
       def assert_flag(*a)
         a.each{|e| assert_present assigns(e), "@#{e} not set."}
       end
 
-# 
+# assert_flash_errors - good, as is
 
       def assert_flash_errors(e=nil)
         if e.blank?
