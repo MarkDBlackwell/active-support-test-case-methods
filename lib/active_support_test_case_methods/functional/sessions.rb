@@ -4,7 +4,7 @@ module ActiveSupportTestCaseMethods
 
       private
 
-# 
+# login - good, as is
 
       def login(p=nil)
         p=get_password if p.blank?
@@ -12,7 +12,7 @@ module ActiveSupportTestCaseMethods
         post :create, :password => p
       end
 
-# 
+# remove_read_permission - good, as is
 
       def remove_read_permission(path)
         mode=path.stat.mode

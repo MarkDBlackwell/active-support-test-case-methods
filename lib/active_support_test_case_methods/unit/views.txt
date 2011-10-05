@@ -1,5 +1,2 @@
 From webmaster-gallery/test/unit/views/_shared.rb
 
-assert_partial - good, as is
-check_pretty_html_source - good, as is
-static_asset_matcher - good, as is

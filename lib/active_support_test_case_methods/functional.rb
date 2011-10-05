@@ -3,13 +3,13 @@ module ActiveSupportTestCaseMethods
 
     private
 
-# 
+# assert_filter - good, as is
 
     def assert_filter(filter)
       assert_filter_kind :before, filter, []
     end
 
-# 
+# assert_filter_kind - good, as is
 
     def assert_filter_kind(kind,filter,sa=nil)
       if sa.blank? then skip_actions=[]
@@ -30,31 +30,31 @@ module ActiveSupportTestCaseMethods
           ].join "\n")
     end
 
-# 
+# assert_filter_skips - good, as is
 
     def assert_filter_skips(filter, actions)
       assert_filter_kind :before, filter, actions
     end
 
-# 
+# assert_flash_blank - good, as is
 
     def assert_flash_blank
       assert_blank [:error,:notice].map{|e| [flash[e],flash.now[e]]}.to_s
     end
 
-# 
+# assert_logged_in - good, as is
 
     def assert_logged_in
       assert_equal true, session[:logged_in]
     end
 
-# 
+# assert_no_filter - good, as is
 
     def assert_no_filter(filter)
       assert_no_filter_kind :before, filter
     end
 
-# 
+# assert_no_filter_kind - good, as is
 
     def assert_no_filter_kind(kind,filter)
       undesired=[filter, filter, kind]
@@ -67,19 +67,20 @@ module ActiveSupportTestCaseMethods
           ].join "\n")
     end
 
-# 
+# assert_not_logged_in - good, as is
 
     def assert_not_logged_in
       assert_blank session[:logged_in]
     end
 
-# 
+# assert_nothing_rendered - good, as is
 
     def assert_nothing_rendered
       assert_template # No template.
     end
 
 # Needs tweaking
+# assert_routing - needs tweaking
 
     def assert_routing(*args)
       k=:path
@@ -97,33 +98,33 @@ module ActiveSupportTestCaseMethods
       super *args 
     end
 
-# 
+# filter - good, as is
 
     def filter
       @controller.send @filter
     end
 
-# 
+# filter_chain - good, as is
 
     def filter_chain
 # TODO: Maybe use api.rubyonrails.org/classes/ActionController/Testing/ClassMethods.html method, 'before_filters'.
       @controller._process_action_callbacks
     end
 
-# 
+# pretend_logged_in - good, as is
 
     def pretend_logged_in
       session[:logged_in]=true
       set_cookies
     end
 
-# 
+# set_cookies - good, as is
 
     def set_cookies
       request.cookies[:not_empty]='not_empty'
     end
 
-# 
+# test_happy_path_response - good, as is
 
     def self.test_happy_path_response(action=nil)
       test "happy path" do
@@ -136,7 +137,7 @@ module ActiveSupportTestCaseMethods
       end
     end
 
-# 
+# test_routing_tag - good, as is
 
     def self.test_routing_tag(directory_root=false)
       test "routing with and without tag should..." do

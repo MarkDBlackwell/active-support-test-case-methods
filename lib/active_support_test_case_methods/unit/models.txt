@@ -1,7 +1,2 @@
 From webmaster-gallery/test/unit/models/_shared.rb
 
-assert_validates - good, as is
-assert_validates_length_of - good, as is
-assert_validates_numericality_of - good, as is
-assert_validates_presence_of - good, as is
-assert_validates_uniqueness_of - good, as is

@@ -5,7 +5,7 @@ module ActiveSupportTestCaseMethods
 
         private
 
-# 
+# controller_yield - good, as is
 
         def controller_yield
 # Without setup_with_controller, another render appends the response, increasing
@@ -13,7 +13,7 @@ module ActiveSupportTestCaseMethods
           (setup_with_controller; yield) if block_given?
         end
 
-# 
+# render_partial - good, as is
 
         def render_partial(p,local_assigns={})
 # ActionView::TestCase::Behavior#, which invokes ActionView::Rendering#:

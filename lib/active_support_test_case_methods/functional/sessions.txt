@@ -1,4 +1,2 @@
 From webmaster-gallery/test/functional/sessions/_shared.rb
 
-login - good, as is
-remove_read_permission - good, as is

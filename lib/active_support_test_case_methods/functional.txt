@@ -1,18 +1,2 @@
 From webmaster-gallery/test/functional/_shared.rb
 
-assert_filter - good, as is
-assert_filter_kind - good, as is
-assert_filter_skips - good, as is
-assert_flash_blank - good, as is
-assert_logged_in - good, as is
-assert_no_filter - good, as is
-assert_no_filter_kind - good, as is
-assert_not_logged_in - good, as is
-assert_nothing_rendered - good, as is
-assert_routing - needs tweaking
-filter - good, as is
-filter_chain - good, as is
-pretend_logged_in - good, as is
-set_cookies - good, as is
-test_happy_path_response - good, as is
-test_routing_tag - good, as is

@@ -1,3 +1,2 @@
 From webmaster-gallery/test/functional/application/_shared.rb
 
-expect_redirect_sessions_new - good, as is

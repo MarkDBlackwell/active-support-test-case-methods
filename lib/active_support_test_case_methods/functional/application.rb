@@ -4,7 +4,7 @@ module ActiveSupportTestCaseMethods
 
       private
 
-# 
+# expect_redirect_sessions_new - good, as is
 
       def expect_redirect_sessions_new
         @controller.expects(:redirect_to).with :controller => :sessions,

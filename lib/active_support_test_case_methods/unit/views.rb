@@ -4,7 +4,7 @@ module ActiveSupportTestCaseMethods
 
       private
 
-# 
+# assert_partial - good, as is
 
       def assert_partial(*args)
         p=c=nil
@@ -18,7 +18,7 @@ module ActiveSupportTestCaseMethods
         assert_template :partial => p, :count => c
       end
 
-# 
+# check_pretty_html_source - good, as is
 
       def check_pretty_html_source(*args)
 # TODO: remove array, 'type' (just show types in a comment, above). Use undef?
@@ -43,7 +43,7 @@ module ActiveSupportTestCaseMethods
             [(a.at i), (anywhere_in_line.at i), '']}.flatten.join nl
       end
 
-# 
+# static_asset_matcher - good, as is
 
       def static_asset_matcher(s)
 # TODO def static_asset_matcher(s) # Lost the digits; don't know why.

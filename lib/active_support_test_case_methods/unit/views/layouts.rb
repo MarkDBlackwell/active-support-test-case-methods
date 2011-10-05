@@ -5,7 +5,7 @@ module ActiveSupportTestCaseMethods
 
         private
 
-# 
+# render_layout - good, as is
 
         def render_layout(filename, instance_variables={})
 # To achieve the following invocation of render, for example:
